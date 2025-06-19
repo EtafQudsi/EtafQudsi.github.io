@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etaf El-Qudsi - AI Engineer Portfolio</title>
+    
+    <!-- Google Fonts for a clean look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- General Styling & Variables --- */
+        :root {
+            --bg-color: #1a1a2e;
+            --card-color: #16213e;
+            --primary-color: #0f3460;
+            --accent-color: #e94560;
+            --text-color: #e0e0e0;
+            --light-text-color: #a0a0a0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        h1, h2, h3 {
+            font-weight: 600;
+            color: white;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+        
+        /* --- Header / Hero Section --- */
+        #home {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        #home h1 {
+            font-size: 4rem;
+        }
+
+        #home .subtitle {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        .social-links a {
+            color: var(--text-color);
+            font-size: 1.8rem;
+            margin: 0 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* --- About Section --- */
+        #about p {
+            font-size: 1.1rem;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--light-text-color);
+        }
+
+        /* --- Skills Section --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .skill-category {
+            background: var(--card-color);
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 5px solid var(--accent-color);
+        }
+
+        .skill-category h3 {
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+        
+        .skill-category li {
+            margin-bottom: 0.5rem;
+            color: var(--light-text-color);
+        }
+        
+        /* --- Projects Section --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: var(--card-color);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+
+        .project-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-content h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .project-description {
+            color: var(--light-text-color);
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+        
+        .project-tech {
+            margin-bottom: 1.5rem;
+        }
+        
+        .tech-tag {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            padding: 0.3rem 0.7rem;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+        }
+        
+        .project-links {
+            margin-top: auto;
+        }
+
+        .project-links .btn {
+            text-decoration: none;
+            color: white;
+            background-color: var(--accent-color);
+            padding: 0.6rem 1.2rem;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            margin-right: 0.5rem;
+        }
+
+        .project-links .btn:hover {
+            background-color: #d83a56; /* A slightly darker accent */
+        }
+        
+        /* --- Education & Certs Section --- */
+        .education-item {
+            background: var(--card-color);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            border-left: 5px solid var(--accent-color);
+        }
+        .education-item h3 {
+            font-size: 1.2rem;
+        }
+        .education-item p {
+            color: var(--light-text-color);
+        }
+        .education-item .institution {
+            font-weight: 600;
+            color: var(--text-color);
+        }
+        
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            background-color: var(--card-color);
+            margin-top: 3rem;
+        }
+        footer p {
+            color: var(--light-text-color);
+        }
+        footer .email-link {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* --- Responsive Design --- */
+        @media(max-width: 768px) {
+            #home h1 {
+                font-size: 3rem;
+            }
+            #home .subtitle {
+                font-size: 1.2rem;
+            }
+            h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    
+    <header id="home">
+        <div class="container">
+            
+            <h1>Etaf Bilal El-Qudsi</h1>
+            <p class="subtitle">AI Engineer | Machine Learning Developer | Problem Solver</p>
+            <div class="social-links">
+    
+                <a href="https://www.linkedin.com/in/etaf-qudsi-b8b455194/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/EtafQudsi" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="etafkodsi@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+    
+        <section id="about">
+            <div class="container">
+                <h2>About Me</h2>
+    
+                <p>
+                    A highly motivated and results-oriented Computer Science graduate with a Very Good grade (GPA 3.02/4.0) and a strong foundation in Machine Learning, Deep Learning, and advanced problem-solving. Proven ability to develop end-to-end AI solutions, from data processing and model training with PyTorch/TensorFlow to system integration. Eager to apply my skills in computer vision and predictive modeling to solve complex challenges in an AI Engineer role.
+                </p>
+            </div>
+        </section>
+
+        <!-- SKILLS SECTION -->
+        <section id="skills">
+            <div class="container">
+                <h2>Technical Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>AI / Machine Learning</h3>
+                        <ul>
+                            <li>Deep Learning & Computer Vision</li>
+                            <li>Predictive Modeling</li>
+                            <li>PyTorch & TensorFlow</li>
+                            <li>Scikit-learn, NumPy, Pandas</li>
+                            <li>OpenCV</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Programming & Databases</h3>
+                        <ul>
+                            <li>Python</li>
+                            <li>C++</li>
+                            <li>Java</li>
+                            <li>SQL & MySQL</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Development Tools</h3>
+                        <ul>
+                            <li>Git & GitHub</li>
+                            <li>Android Studio</li>
+                            <li>Unity</li>
+                            <li>Data Visualization (Matplotlib, Seaborn)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS SECTION -->
+        <section id="projects">
+            <div class="container">
+                <h2>Projects</h2>
+                <div class="projects-grid">
+                    
+                    <!-- Project 1: Smart Grading System -->
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h3>Smart Grading System</h3>
+                            <p class="project-description">
+                                Engineered an automated grading system to digitize academic evaluations. Implemented a computer vision pipeline with a custom OCR model to recognize handwritten Arabic names and scores, and integrated with WhatsApp/Gmail APIs to autonomously notify students.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">OpenCV</span>
+                                <span class="tech-tag">OCR</span>
+                                <span class="tech-tag">Pandas</span>
+                                <span class="tech-tag">API</span>
+                            </div>
+                            <div class="project-links">
+                                
+                                <a href="https://github.com/Abdulrahman-Awad21/Smart-Grading" target="_blank" class="btn">View on GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 2: Face Mask Detection -->
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h3>Real-Time Face Mask Detection</h3>
+                            <p class="project-description">
+                                Developed and trained a Convolutional Neural Network (CNN) to classify correct/incorrect mask usage in real-time video streams. Achieved over 81% accuracy on the test set.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">TensorFlow</span>
+                                <span class="tech-tag">Keras</span>
+                                <span class="tech-tag">CNN</span>
+                                <span class="tech-tag">OpenCV</span>
+                            </div>
+                            <div class="project-links">
+                                <!-- ✅ IMPORTANT: ADD YOUR PROJECT URL HERE -->
+                                <a href="https://colab.research.google.com/drive/1Wi2b6stK9X60yTKp5hT2U2iIbIqU0HtT#scrollTo=ojnYTp7gV0PU" target="_blank" class="btn">View on Notebook</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 3: Bank Loan Prediction -->
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h3>Bank Loan Default Prediction</h3>
+                            <p class="project-description">
+                                Built a classification model to predict a customer's likelihood of accepting a loan. Performed data cleaning, feature engineering, and evaluated multiple ML models to achieve high predictive accuracy.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Scikit-learn</span>
+                                <span class="tech-tag">Pandas</span>
+                                <span class="tech-tag">Matplotlib</span>
+                            </div>
+                            <div class="project-links">
+                                <!-- ✅ IMPORTANT: ADD YOUR PROJECT URL HERE -->
+                                <a href="https://colab.research.google.com/drive/1B8Fhi2H3jyrDe7KHQ8E6KjIgEgZzUr50" target="_blank" class="btn">View on Notebook</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+        
+        <!-- EDUCATION & CERTIFICATIONS SECTION -->
+        <section id="education">
+            <div class="container">
+                <h2>Education & Certifications</h2>
+                <div class="education-item">
+                    <h3>Bachelor of Science in Computer Science</h3>
+                    <p><span class="institution">Ain Shams University, Cairo</span> | 2019 - 2023</p>
+                    <p>GPA: 3.019/4.0 (Grade: Very Good)</p>
+                </div>
+                <div class="education-item">
+                    <h3>Supervised Machine Learning: Regression and Classification</h3>
+                    <p><span class="institution">DeepLearning.AI & Stanford University</span></p>
+                </div>
+                <div class="education-item">
+                    <h3>Qualified Competitor, Advanced & Intermediate Problem Solving</h3>
+                    <p><span class="institution">Couch Academy</span></p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <p>I'm currently looking for new opportunities. Feel free to reach out!</p>
+            <!-- ✏️ EDIT YOUR EMAIL HERE -->
+            <p><a href="etafkodsi@gmail.com" class="email-link">youremail@example.com</a></p>
+            <br>
+            <p>© 2024 Etaf Bilal El-Qudsi. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
